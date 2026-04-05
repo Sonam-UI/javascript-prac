@@ -11,7 +11,6 @@ console.log(multiplyThree);
 
 // Question 2 : Array.filter()
 
-const nums = [1, 2, 3, 4];
 
 const moreThanTwo = nums.filter((num, i, arr) => num > 2 === 0);
 console.log(moreThanTwo);
@@ -46,7 +45,17 @@ Array.prototype.myMap = function (cb) {
 
 
 
+
 // Ques 5 : Filter Polyfill
+Array.prototype.myFilter = function(cb) {
+  let temp = [];
+  for (let i = 0; i < this.length; i++) {
+    if (cb(this[i], i, this)) {
+      temp.push(this[i]);
+    }
+  }
+  return temp;
+};
 
 Array.prototype.myFilter = function (cb) {
   let temp = [];
